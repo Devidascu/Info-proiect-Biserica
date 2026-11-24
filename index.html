@@ -230,8 +230,8 @@
       <div class="side"><span class="num">05</span><h2>Contact</h2></div>
       <div class="body">
         <p class="lead-in left">Ai fotografii sau informații despre o biserică de lemn? Trimite-ne un mesaj prin formularul demonstrativ.</p>
-        <form class="form contact-card" id="contactForm" novalidate>
-          <p class="form-disclaimer">Formular demonstrativ: datele sunt verificate în browser, dar mesajul nu este trimis către un serviciu de email.</p>
+        <form class="form contact-card" id="contactForm" novalidate data-formspree="">
+          <p class="form-disclaimer" id="formMode">Configurează endpoint-ul Formspree în atributul <code>data-formspree</code> al formularului sau în variabila <code>FORMSPREE_ENDPOINT</code> din <code>script.js</code> pentru a primi mesajele. Până atunci, formularul rămâne demonstrativ, cu validare locală.</p>
           <div class="field">
             <label for="name">Nume</label>
             <input autocomplete="name" id="name" name="name" type="text" placeholder="Numele tău" aria-describedby="nameErr" aria-invalid="false">

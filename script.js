@@ -379,8 +379,19 @@ $("#qNext").addEventListener("click",()=>{
 $("#qRestart").addEventListener("click",()=>{question=0;points=0;$("#quizResult").hidden=true;$("#quizBox").hidden=false;renderQuestion();});
 renderQuestion();
 
-// Formular demonstrativ: verifică intrările, nu trimite emailuri.
+// Formular: validare locală + trimitere prin Formspree când endpoint-ul este configurat.
+const FORMSPREE_ENDPOINT = ""; // Exemplu: "https://formspree.io/f/abcdwxyz"
 const form=$("#contactForm");
+const formOk=$("#formOk");
+const formBtn=form?.querySelector('button[type="submit"]');
+const formEndpoint=()=> (form?.dataset.formspree || FORMSPREE_ENDPOINT || "").trim();
+function setFormStatus(message,type="info"){
+  if(!formOk) return;
+  formOk.hidden=!message;
+  formOk.textContent=message;
+  formOk.classList.toggle("is-error",type==="error");
+  formOk.classList.toggle("is-info",type==="info");
+}
 function formError(id,message){
   const input=$("#"+id),err=$("#"+id+"Err");
   err.textContent=message;
@@ -388,8 +399,8 @@ function formError(id,message){
   input.closest(".field").classList.toggle("bad",Boolean(message));
   return !message;
 }
-form.addEventListener("submit",e=>{
-  e.preventDefault();$("#formOk").hidden=true;
+form?.addEventListener("submit",async e=>{
+  e.preventDefault(); setFormStatus("");
   const name=$("#name").value.trim(),email=$("#email").value.trim(),message=$("#message").value.trim();
   const checks=[
     ["name",name.length<2?"Introdu un nume de cel puțin 2 caractere.":""],
@@ -402,7 +413,22 @@ form.addEventListener("submit",e=>{
     if(firstBad) $("#"+firstBad[0]).focus();
     return;
   }
-  $("#formOk").textContent="Datele sunt valide! Aceasta este doar o demonstrație: mesajul nu a fost trimis.";
-  $("#formOk").hidden=false;
+  const endpoint=formEndpoint();
+  if(!endpoint || endpoint.includes("YOUR_FORM_ID")){
+    setFormStatus("Datele sunt valide. Formularul nu este încă conectat: setează endpoint-ul Formspree în data-formspree sau FORMSPREE_ENDPOINT pentru a primi mesajele.","info");
+    return;
+  }
+  if(formBtn){ formBtn.disabled=true; formBtn.textContent="Se trimite..."; }
+  try{
+    const res=await fetch(endpoint,{method:"POST",headers:{Accept:"application/json","Content-Type":"application/json"},body:JSON.stringify({name,email,message,_subject:"Mesaj nou de pe site-ul Biserica de lemn"})});
+    if(!res.ok) throw new Error("Formspree error");
+    form.reset();
+    ["name","email","message"].forEach(id=>formError(id,""));
+    setFormStatus("Mesajul a fost trimis cu succes. Mulțumesc!","info");
+  }catch{
+    setFormStatus("Mesajul nu a putut fi trimis acum. Verifică endpoint-ul Formspree sau conexiunea și încearcă din nou.","error");
+  }finally{
+    if(formBtn){ formBtn.disabled=false; formBtn.textContent="Trimite mesajul"; }
+  }
 });
-["name","email","message"].forEach(id=>$("#"+id).addEventListener("input",()=>formError(id,"")));
+["name","email","message"].forEach(id=>$("#"+id)?.addEventListener("input",()=>formError(id,"")));
