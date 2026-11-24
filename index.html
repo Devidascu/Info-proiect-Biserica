@@ -108,10 +108,12 @@
 <div aria-hidden="true" class="hero-photo"></div>
 <div class="hero-shade"></div>
 <div class="hero-text wrap">
+<div class="hero-panel">
 <p class="kicker">Brătești · Răbăgani · județul Bihor</p>
 <h1>Biserica de lemn<br>din Brătești</h1>
-<p class="hero-sub">Descoperă istoria bisericii „Sfântul Teodor Tiron”, un monument de lemn din Brătești, comuna Răbăgani.</p>
+<p class="hero-sub">Descoperă istoria bisericii „Sfântul Teodor Tiron”, un monument de lemn din Brătești, comuna Răbăgani, păstrat în inima Țării Beiușului.</p>
 <a class="scroll-cue" href="#locul">Începe cu locul <span aria-hidden="true">↓</span></a>
+</div>
 </div>
 </section>
 <!-- ============ 01 LOCUL ============ -->
@@ -276,11 +278,14 @@
 <dialog aria-label="Fotografie mărită" aria-modal="true" id="lb">
   <div class="lb-inner">
     <div class="lb-stage"><img alt="" id="lbImg"></div>
-    <div class="lb-bar">
-      <div id="lbCap" aria-live="polite"></div>
+        <div class="lb-bar">
+      <div class="lb-cap" id="lbCap" aria-live="polite">
+        <div class="lb-cap-title" id="lbTitle"></div>
+        <div class="lb-cap-meta" id="lbMeta"></div>
+      </div>
       <div class="btns">
-        <button type="button" aria-label="Fotografia anterioară" id="lbPrev">←</button>
-        <button type="button" aria-label="Fotografia următoare" id="lbNext">→</button>
+        <button type="button" aria-label="Fotografia anterioară" id="lbPrev"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" aria-label="Fotografia următoare" id="lbNext"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button type="button" id="lbClose">Închide</button>
       </div>
     </div>

@@ -246,7 +246,13 @@ window.addEventListener("resize",()=>requestAnimationFrame(()=>drawGalleryLinks(
 window.addEventListener("load",()=>drawGalleryLinks(currentCategory));
 if("ResizeObserver" in window && galleryPanel) new ResizeObserver(()=>drawGalleryLinks(currentCategory)).observe(galleryPanel);
 
-function renderLightbox(){const p=visiblePhotos[photoIndex];if(!p)return;setImg($("#lbImg"),p);$("#lbImg").alt=p.title;$("#lbCap").textContent=`${p.title}${p.note ? " · " + p.note : ""} (${photoIndex+1}/${visiblePhotos.length})`;}
+function renderLightbox(){
+  const p=visiblePhotos[photoIndex]; if(!p) return;
+  setImg($("#lbImg"),p); $("#lbImg").alt=p.title;
+  const cat=CATEGORY_LABELS[p.category]||p.category;
+  $("#lbTitle").textContent=p.title;
+  $("#lbMeta").textContent=[cat,p.note].filter(Boolean).join(" · ") + ` · ${photoIndex+1}/${visiblePhotos.length}`;
+}
 function movePhoto(delta){if(!visiblePhotos.length)return;photoIndex=(photoIndex+delta+visiblePhotos.length)%visiblePhotos.length;renderLightbox();}
 $("#lbPrev").addEventListener("click",()=>movePhoto(-1));
 $("#lbNext").addEventListener("click",()=>movePhoto(1));
