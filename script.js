@@ -57,6 +57,9 @@ const $ = (s,root=document)=>root.querySelector(s);
 const $$ = (s,root=document)=>Array.from(root.querySelectorAll(s));
 
 // Meniu mobil, temă, header și an curent.
+if("scrollRestoration" in history) history.scrollRestoration="manual";
+if(!location.hash) window.scrollTo(0,0);
+window.addEventListener("load",()=>{ if(!location.hash) window.scrollTo(0,0); },{once:true});
 const navToggle=$("#navToggle"), navLinks=$("#navLinks"), header=$("#siteHeader"), themeToggle=$("#themeToggle"), backTop=$("#backTop");
 const themeMq=window.matchMedia("(prefers-color-scheme: dark)");
 const getSavedTheme=()=>{ try { return localStorage.getItem("theme"); } catch { return null; } };
@@ -348,7 +351,7 @@ function shuffleOptions(q){
   for(let i=items.length-1;i>0;i--){const k=Math.floor(Math.random()*(i+1));[items[i],items[k]]=[items[k],items[i]];}
   return items;
 }
-function renderQuestion(){
+function renderQuestion(focusFirst=true){
   const q=QUIZ[question];answered=false;
   const opts=shuffleOptions(q),correctText=q.options[q.correct];
   $("#qCount").textContent=`Întrebarea ${question+1} din ${QUIZ.length}`;
@@ -370,12 +373,12 @@ function renderQuestion(){
       $("#qNext").focus();
     });
     wrap.append(btn);
-    if(i===0) requestAnimationFrame(()=>btn.focus());
+    if(i===0 && focusFirst) requestAnimationFrame(()=>btn.focus());
   });
 }
 $("#qNext").addEventListener("click",()=>{
   if(!answered)return;question++;
-  if(question<QUIZ.length){renderQuestion();return;}
+  if(question<QUIZ.length){renderQuestion(false);return;}
   $("#quizBox").hidden=true;$("#quizResult").hidden=false;
   $("#rScore").textContent=`${points} din ${QUIZ.length}`;
   const ratio=points/QUIZ.length;
@@ -383,7 +386,7 @@ $("#qNext").addEventListener("click",()=>{
   $("#qRestart").focus();
 });
 $("#qRestart").addEventListener("click",()=>{question=0;points=0;$("#quizResult").hidden=true;$("#quizBox").hidden=false;renderQuestion();});
-renderQuestion();
+renderQuestion(false);
 
 // Formular: validare locală + trimitere prin Formspree când endpoint-ul este configurat.
 const FORMSPREE_ENDPOINT = ""; // Exemplu: "https://formspree.io/f/abcdwxyz"
