@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biserica de lemn din Brătești</title>
+<meta name="description" content="Proiect școlar despre biserica de lemn „Sfântul Teodor Tiron” din Brătești, comuna Răbăgani, Țara Beiușului: istorie, galerie, hartă, quiz.">
+<meta name="color-scheme" content="light dark">
+<script>(function(){try{var s=localStorage.getItem('theme');var t=s||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();</script>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235a3a24'/%3E%3Cpath d='M16 4l7 10h-4l5 8H8l5-8H9z' fill='%23f3ece0'/%3E%3C/svg%3E" rel="icon">
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<a class="skip" href="#continut">Sari la conținut</a>
+<header class="site-header" id="siteHeader">
+  <nav aria-label="Navigare principală" class="nav wrap">
+    <a class="brand" href="#acasa">Biserica de lemn</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#locul">Locul</a></li>
+      <li><a href="#biserica">Biserica</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+            <button class="theme-toggle" id="themeToggle" type="button" aria-label="Activează tema întunecată" aria-pressed="false" title="Comută tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.5M12 19v2.5M4.93 4.93l1.77 1.77M17.3 17.3l1.77 1.77M2.5 12H5M19 12h2.5M4.93 19.07l1.77-1.77M17.3 6.7l1.77-1.77" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </button>
+      <button aria-expanded="false" aria-controls="navLinks" aria-label="Deschide meniul" class="nav-toggle" id="navToggle"><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<main id="continut">
+<!-- ============ HERO ============ -->
+<section class="hero" id="acasa">
+<!-- Ilustrație de rezervă (desenată în SVG). Dacă fișierul din style.css (.hero-photo) există, fotografia acoperă ilustrația. -->
+<svg aria-hidden="true" class="hero-art" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1600 900">
+<defs>
+<linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0" stop-color="#1c2840"/>
+<stop offset=".42" stop-color="#55668a"/>
+<stop offset=".74" stop-color="#d49c7e"/>
+<stop offset="1" stop-color="#f3d3a2"/>
+</linearGradient>
+<radialGradient cx=".5" cy=".72" id="glow" r=".55">
+<stop offset="0" stop-color="#fff1cf" stop-opacity=".9"/>
+<stop offset="1" stop-color="#fff1cf" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="mist" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0" stop-color="#f6e3c8" stop-opacity="0"/>
+<stop offset="1" stop-color="#f6e3c8" stop-opacity=".5"/>
+</linearGradient>
+<symbol id="fir" overflow="visible">
+<polygon points="0,-130 30,-70 16,-70 40,-20 20,-20 46,40 -46,40 -20,-20 -40,-20 -16,-70 -30,-70"/>
+</symbol>
+</defs>
+<rect fill="url(#sky)" height="900" width="1600"/>
+<rect fill="url(#glow)" height="900" width="1600"/>
+<g fill="#fff" opacity=".7">
+<circle cx="180" cy="90" r="1.6"/><circle cx="420" cy="150" r="1.2"/><circle cx="640" cy="60" r="1.5"/>
+<circle cx="980" cy="110" r="1.3"/><circle cx="1240" cy="70" r="1.7"/><circle cx="1480" cy="160" r="1.2"/>
+<circle cx="90" cy="230" r="1.1"/><circle cx="1360" cy="260" r="1.3"/>
+</g>
+<!-- dealuri -->
+<path d="M0 560 C200 505 380 545 560 505 S900 470 1100 520 S1450 490 1600 525 V900 H0Z" fill="#7a86a0" opacity=".85"/>
+<path d="M0 640 C240 590 420 650 640 612 S1000 570 1200 622 S1500 600 1600 612 V900 H0Z" fill="#4f5f70"/>
+<path d="M0 745 C300 700 600 722 800 692 S1250 645 1600 700 V900 H0Z" fill="#2c3a33"/>
+<!-- biserica -->
+<g transform="translate(-251 0)">
+<rect fill="#2a1d15" height="92" width="250" x="930" y="610"/>
+<polygon fill="#1a110b" points="918,612 1192,612 1140,538 972,538"/>
+<g opacity=".7" stroke="#3a2a20" stroke-width="1.5">
+<line x1="940" x2="1170" y1="590" y2="590"/><line x1="955" x2="1155" y1="568" y2="568"/><line x1="965" x2="1146" y1="552" y2="552"/>
+</g>
+<rect fill="#2a1d15" height="60" width="48" x="1180" y="642"/>
+<polygon fill="#1a110b" points="1174,644 1234,644 1204,608"/>
+<rect fill="#2a1d15" height="202" width="62" x="868" y="500"/>
+<rect fill="#231710" height="50" width="82" x="858" y="452"/>
+<rect fill="#0e0907" height="30" width="18" x="890" y="462"/>
+<polygon fill="#1a110b" points="852,452 946,452 899,246"/>
+<polygon fill="#1a110b" points="852,452 872,452 862,418"/>
+<polygon fill="#1a110b" points="926,452 946,452 936,418"/>
+<line stroke="#1a110b" stroke-width="3" x1="899" x2="899" y1="246" y2="216"/>
+<line stroke="#1a110b" stroke-width="3" x1="890" x2="908" y1="228" y2="228"/>
+<g fill="#f4c76e" opacity=".92">
+<rect height="26" width="14" x="968" y="642"/><rect height="26" width="14" x="1040" y="642"/><rect height="26" width="14" x="1112" y="642"/>
+<rect height="38" opacity=".8" width="24" x="887" y="664"/>
+</g>
+<g fill="#15201a">
+<use href="#fir" transform="translate(760 720) scale(1.1)"/>
+<use href="#fir" transform="translate(705 728) scale(.8)"/>
+<use href="#fir" transform="translate(1290 722) scale(1.05)"/>
+<use href="#fir" transform="translate(1350 730) scale(.85)"/>
+</g>
+</g>
+<g fill="#131c17">
+<use href="#fir" transform="translate(110 760) scale(1.5)"/>
+<use href="#fir" transform="translate(230 770) scale(1.1)"/>
+<use href="#fir" transform="translate(1470 755) scale(1.6)"/>
+<use href="#fir" transform="translate(1380 775) scale(1.05)"/>
+<use href="#fir" transform="translate(40 790) scale(1.2)"/>
+</g>
+<rect fill="url(#mist)" height="150" width="1600" y="640"/>
+<path d="M0 810 C400 775 900 800 1600 765 V900 H0Z" fill="#18211c"/>
+</svg>
+<div aria-hidden="true" class="hero-photo"></div>
+<div class="hero-shade"></div>
+<div class="hero-text wrap">
+<p class="kicker">Brătești · Răbăgani · județul Bihor</p>
+<h1>Biserica de lemn<br>din Brătești</h1>
+<p class="hero-sub">Descoperă istoria bisericii „Sfântul Teodor Tiron”, un monument de lemn din Brătești, comuna Răbăgani.</p>
+<a class="scroll-cue" href="#locul">Începe cu locul <span aria-hidden="true">↓</span></a>
+</div>
+</section>
+<!-- ============ 01 LOCUL ============ -->
+<section class="section" id="locul">
+<div class="wrap split">
+<div class="side"><span class="num">01</span><h2>Locul</h2></div>
+<div class="place-layout"><div class="prose place-copy">
+<p class="dropcap">Satul <strong>Brătești</strong> aparține comunei Răbăgani din județul Bihor, într-un ținut de dealuri și sate aflat în apropierea Beiușului. Aici se găsește biserica de lemn cu hramul <strong>„Sfântul Teodor Tiron”</strong>, un monument istoric al arhitecturii tradiționale.</p>
+<p>Monumentul a fost adus din satul Sitani în anii 1976–1978. Biserica amintește de meșteșugul construirii în lemn și de rolul pe care lăcașurile de cult l-au avut în viața comunităților din Bihor.</p>
+<aside class="note"><b>Pe scurt</b><dl>
+<div><dt>Localitate</dt><dd>Brătești, comuna Răbăgani</dd></div>
+<div><dt>Hram</dt><dd>Sfântul Teodor Tiron</dd></div>
+<div><dt>Datare</dt><dd>Secolul al XVIII-lea</dd></div>
+<div><dt>Monument istoric</dt><dd>BH-II-m-B-01122</dd></div>
+</dl></aside>
+</div><div class="place-map-panel"><h3>Găsește biserica din Brătești</h3><p>Apasă pe Brătești sau pe un alt punct de pe hartă.</p><div aria-label="Hartă interactivă a Țării Beiușului" class="map" id="map"></div><p class="map-note" hidden id="mapNote">Harta necesită conexiune la internet. Lista de locuri rămâne disponibilă.</p><ul class="poi-list" id="poiList"></ul></div></div>
+</div>
+</section>
+<!-- ============ 02 BISERICA ============ -->
+<section class="section alt" id="biserica">
+<div class="wrap split">
+<div class="side"><span class="num">02</span><h2>Biserica</h2></div>
+<div class="body church-body">
+<div class="book-wrap">
+<article class="book">
+<div class="pages">
+<div class="page page-left">
+<p class="run-head" aria-hidden="true">Biserica de lemn din Brătești</p>
+<p class="chapter" aria-hidden="true">Capitolul II</p>
+<h3>Biserica de lemn „Sfântul Teodor Tiron”</h3>
+<div aria-hidden="true" class="orn"><i></i></div>
+<p class="dropcap">Biserica de lemn din Brătești este un monument istoric al comunei Răbăgani. A fost construită în <strong>secolul al XVIII-lea</strong><sup>*</sup> și se afla inițial în satul Sitani. În perioada <strong>1976–1978</strong> a fost mutată la Brătești, unde se află și acum. Este și azi o biserică vie: <strong>în fiecare duminică se slujește aici</strong>.</p>
+<aside class="note"><b>Detalii importante</b><dl>
+<div><dt>Satul de origine</dt><dd>Sitani, Bihor</dd></div>
+<div><dt>Mutare la Brătești</dt><dd>1976–1978</dd></div>
+<div><dt>Restaurare</dt><dd>proiect din 2009</dd></div>
+<div><dt>Element distinctiv</dt><dd>Brâul median din lemn</dd></div>
+<div><dt>Slujbe</dt><dd>în fiecare duminică</dd></div>
+</dl></aside>
+<p class="footnote"><sup>*</sup> Notă istorică: sursele consultate indică ani diferiți pentru construcție (1718, 1738 și 1740); de aceea folosim datarea în secolul al XVIII-lea.</p>
+<p aria-hidden="true" class="folio">— 14 —</p>
+</div>
+<div class="page page-right">
+<p class="run-head" aria-hidden="true">Țara Beiușului · Bihor</p>
+<figure class="church-photo"><img alt="Biserica de lemn din Brătești, vedere de ansamblu" loading="lazy" src="images/exterior-01.jpg"><figcaption>Fig. 1. Biserica de lemn „Sfântul Teodor Tiron”, Brătești</figcaption></figure>
+<p>Clădirea se remarcă prin pereții din <strong>bârne de lemn</strong>, acoperișul înalt și <strong>turnul-clopotniță</strong> cu vârf ascuțit. Bârnele sunt așezate orizontal și se întâlnesc la colțuri prin îmbinări specifice tâmplăriei tradiționale. Aceste detalii arată priceperea meșterilor care ridicau biserici fără materialele moderne de construcție.</p>
+<p>Interiorul păstrează spațiile tradiționale ale bisericii ortodoxe, iar pictura, iconostasul și icoanele dau lăcașului atmosfera lui specifică. Fotografiile din galerie arată aceste detalii.</p>
+<p>În <strong>2009</strong>, la cererea Parohiei Ortodoxe Brătești, arhitectul orădean Cristian Pușcaș a realizat proiectul de restaurare, care a schimbat șarpanta și învelitoarea și a readus biserica la imaginea inițială. Biserica rămâne un reper al tradiției și memoriei locale.</p>
+<p aria-hidden="true" class="folio">— 15 —</p>
+</div>
+</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+  <!-- ============ 03 GALERIE ============ -->
+  <section class="section" id="galerie">
+    <div class="wrap">
+      <div class="head-row">
+        <div class="side inline"><span class="num">03</span><h2>Galerie</h2></div>
+        <div aria-label="Filtrează fotografiile" class="filters" role="group">
+          <button type="button" aria-pressed="true" data-filter="toate">Toate</button>
+          <button type="button" aria-pressed="false" data-filter="exterior">Exterior</button>
+          <button type="button" aria-pressed="false" data-filter="interior">Interior</button>
+          <button type="button" aria-pressed="false" data-filter="detalii">Detalii și tradiții</button>
+          <button type="button" aria-pressed="false" data-filter="capela">Capela mortuară</button>
+        </div>
+      </div>
+      <p class="gallery-intro">Un panou vizual aerisit despre Biserica de lemn „Sfântul Teodor Tiron” din Brătești, unde fotografiile și notițele scurte se leagă firesc între ele.</p>
+    </div>
+
+    <div class="gallery-shell">
+        <div class="gallery-panel" id="galleryPanel">
+          <svg aria-hidden="true" class="gallery-links" id="galleryLinks" preserveAspectRatio="none" focusable="false"></svg>
+          <p class="sr-only" id="galleryStatus" aria-live="polite"></p>
+          <div class="gallery-board" id="gallery"></div>
+        </div>
+    </div>
+
+    <div class="wrap">
+      <p class="photo-credit">Fotografii: autorul proiectului. Imaginile preluate din alte surse sunt atribuite în „Surse folosite”, din subsolul paginii.</p>
+      <div class="video-block" id="videoBlock">
+        <h3 class="video-title">Video</h3>
+        <div class="video-box" id="videoBox"><button id="videoBtn" type="button"><span class="tri"></span><span>Pornește videoclipul</span></button></div>
+      </div>
+    </div>
+  </section>
+  <!-- ============ 04 QUIZ ============ -->
+  <section class="section" id="quiz">
+    <div class="wrap split">
+      <div class="side"><span class="num">04</span><h2>Quiz</h2></div>
+      <div class="body">
+        <p class="lead-in left">Verifică ce ai reținut despre Biserica de lemn „Sfântul Teodor Tiron” din Brătești.</p>
+        <div class="quiz" id="quizBox">
+          <div class="q-top"><span id="qCount"></span><span class="q-score-pill" id="qScore"></span></div>
+          <div class="q-bar" aria-hidden="true"><i id="qBar"></i></div>
+          <p class="q-kicker">Întrebare</p>
+          <h3 id="qText" tabindex="-1"></h3>
+          <div class="q-options" id="qOptions" role="group" aria-label="Variante de răspuns"></div>
+          <p aria-live="polite" aria-atomic="true" class="q-why" id="qWhy"></p>
+          <div class="q-actions"><button class="btn" type="button" hidden id="qNext">Următoarea</button></div>
+        </div>
+        <div class="quiz result" hidden id="quizResult">
+          <p class="r-label">Rezultat final</p>
+          <p class="r-score" id="rScore"></p>
+          <p class="r-msg" id="rMsg"></p>
+          <button class="btn" type="button" id="qRestart">Încearcă din nou</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============ 05 CONTACT ============ -->
+  <section class="section alt" id="contact">
+    <div class="wrap split">
+      <div class="side"><span class="num">05</span><h2>Contact</h2></div>
+      <div class="body">
+        <p class="lead-in left">Ai fotografii sau informații despre o biserică de lemn? Trimite-ne un mesaj prin formularul demonstrativ.</p>
+        <form class="form contact-card" id="contactForm" novalidate>
+          <p class="form-disclaimer">Formular demonstrativ: datele sunt verificate în browser, dar mesajul nu este trimis către un serviciu de email.</p>
+          <div class="field">
+            <label for="name">Nume</label>
+            <input autocomplete="name" id="name" name="name" type="text" placeholder="Numele tău" aria-describedby="nameErr" aria-invalid="false">
+            <small class="err" id="nameErr" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input autocomplete="email" id="email" name="email" type="email" placeholder="nume@exemplu.ro" aria-describedby="emailErr" aria-invalid="false">
+            <small class="err" id="emailErr" aria-live="polite"></small>
+          </div>
+          <div class="field">
+            <label for="message">Mesaj</label>
+            <textarea id="message" name="message" rows="5" placeholder="Scrie mesajul tău aici..." aria-describedby="messageErr" aria-invalid="false"></textarea>
+            <small class="err" id="messageErr" aria-live="polite"></small>
+          </div>
+          <div class="form-actions"><button class="btn" type="submit">Trimite mesajul</button></div>
+          <p class="ok" hidden id="formOk" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<details>
+<summary>Surse folosite</summary>
+<ul>
+<li><a href="https://www.comunarabagani.ro/comuna-rabagani/obiective-turistice/">Primăria comunei Răbăgani – obiective turistice</a> și <a href="https://www.comunarabagani.ro/">pagina principală</a> (satul de origine, cod monument, restaurarea din 2009)</li>
+<li><a href="https://ro.wikipedia.org/wiki/Biserica_de_lemn_din_Br%C4%83te%C8%99ti">Wikipedia – Biserica de lemn din Brătești</a> (istoric, document din 1756, brâul median)</li>
+<li><a href="https://culturabh.ro/images/patrimoniu-imobil/Ghid_biserici_de_lemn_BIHOR_publicat-2014.pdf">Ghidul bisericilor de lemn din Bihor</a> (mutarea din Sitani, 1976–1978)</li>
+<li><a href="https://basilica.ro/sfantul-teodor-tiron-ocroteste-multe-lacasuri/">Basilica.ro – Sfântul Teodor Tiron ocrotește multe lăcașuri</a> (datarea 1738)</li>
+<li><a href="https://lacasuridecult.cimec.ro/EN/Documente/ASP/culte.asp?nr=26">CIMEC – Repertoriul lăcașurilor de cult</a> (hramul și amplasarea)</li>
+<li><a href="https://commons.wikimedia.org/wiki/Category:Wooden_church_in_Br%C4%83te%C8%99ti,_Bihor">Wikimedia Commons – fotografii ale bisericii din Brătești</a> (fotografii atribuite autorilor și licențelor de pe paginile fișierelor)</li>
+<li><a href="https://showcaves.com/english/ro/showcaves/Meziad.html">Showcaves – Peștera Meziad</a> (coordonate, lungime) și <a href="https://ro.wikipedia.org/wiki/Lazuri_de_Beiu%C8%99,_Bihor">Wikipedia – Lazuri de Beiuș</a> (poziție)</li>
+<li><a href="https://mapcarta.com/N4932619958">Mapcarta / OpenStreetMap – poziția bisericii</a></li>
+</ul>
+</details>
+<p>Proiect școlar la informatică · <span id="year"></span></p>
+</div>
+</footer>
+<button class="back-top" id="backTop" type="button" aria-label="Înapoi sus" title="Înapoi sus"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5l-6 6m6-6 6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<dialog aria-label="Fotografie mărită" aria-modal="true" id="lb">
+  <div class="lb-inner">
+    <div class="lb-stage"><img alt="" id="lbImg"></div>
+    <div class="lb-bar">
+      <div id="lbCap" aria-live="polite"></div>
+      <div class="btns">
+        <button type="button" aria-label="Fotografia anterioară" id="lbPrev">←</button>
+        <button type="button" aria-label="Fotografia următoare" id="lbNext">→</button>
+        <button type="button" id="lbClose">Închide</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
