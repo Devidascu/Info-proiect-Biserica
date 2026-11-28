@@ -476,8 +476,20 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
 
 @media (max-width: 768px) {
   body { font-size: 1.0125rem; }
-  .hero { padding-top: 2.75rem; }
-  .hero-content { padding-top: 0.25rem; }
+  .hero { display: block; min-height: auto; padding: 0; background: var(--bg); scroll-margin-top: calc(var(--header-h) + 1rem); }
+  .hero-media { position: relative; inset: auto; height: min(56vw, 420px); min-height: 260px; }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+  .hero-overlay { display: none; }
+  .hero-content { position: relative; color: var(--text); padding: 1.4rem 1rem 2rem; width: min(1180px, calc(100% - 2rem)); margin-inline: auto; }
+  .hero .eyebrow { color: var(--accent); }
+  .hero h1 { color: var(--text); max-width: 12ch; }
+  .hero h1 span { color: var(--muted); max-width: 18ch; }
+  .hero-lead { color: var(--muted); max-width: 38rem; }
+  .hero-actions .btn-ghost { color: var(--text); border-color: var(--line); background: var(--surface); backdrop-filter: none; }
+  .hero-actions .btn-ghost:hover { background: var(--surface-2); }
+  .hero-facts div { border-top-color: var(--line); }
+  .hero .fact-label { color: var(--muted); }
+  .hero-facts strong { color: var(--text); }
   .lead, .hero-lead { font-size: 1.06rem; }
   .history-card p, .check-list li, .detail-photo figcaption, .photo-credit, .contact-note p, .sources li, .sources summary { font-size: 1rem; }
   figure.item .item-note { font-size: 0.98rem; line-height: 1.55; }
@@ -514,8 +526,9 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
   figure.item figcaption b { font-size: 1.02rem; }
   .gallery-note { padding: .85rem .9rem .9rem 1rem; }
   .section-head-row { flex-direction: column; align-items: stretch; }
-  .hero { min-height: min(78svh, 680px); padding: 2.5rem 0 2.25rem; }
-  .hero-media img { object-position: center 10%; }
+  .hero { min-height: auto; padding: 0; }
+  .hero-media { height: min(54vw, 360px); min-height: 240px; }
+  .hero-media img { object-position: center 15%; }
   .hero-lead { font-size: 1.02rem; margin-bottom: 1.4rem; }
   .detail-photo img { min-height: 260px; }
   .book-wrap { margin-top: 2rem; }
