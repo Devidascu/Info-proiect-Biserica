@@ -205,17 +205,25 @@ html[data-theme="dark"] .btn-primary { color: #1a1714; }
 .facts-list dd { margin: 0; font-weight: 600; text-align: right; }
 
 /* History */
-.history-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+.history-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.5rem; margin-bottom: 2.5rem; position: relative; }
 .history-card {
-  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 1.5rem; box-shadow: var(--shadow);
+  position: relative; background: linear-gradient(180deg, color-mix(in srgb, var(--surface) 96%, var(--accent-soft) 4%) 0%, var(--surface) 100%);
+  border: 1px solid var(--line); border-top: 4px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+  border-radius: var(--radius); padding: 1.75rem 1.5rem 1.5rem; box-shadow: var(--shadow);
+}
+.history-card::before {
+  content: ""; position: absolute; top: -0.55rem; left: 1.5rem; width: 14px; height: 14px;
+  background: var(--accent); border: 3px solid var(--bg-soft); border-radius: 50%; box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent);
 }
 .history-year {
-  display: inline-flex; padding: .35rem .7rem; border-radius: 999px; background: var(--accent-soft);
-  color: var(--accent); font-weight: 700; font-size: .82rem; margin-bottom: 1rem;
+  display: inline-flex; align-items: center; gap: .45rem; padding: .4rem .85rem; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-soft) 85%, var(--surface) 15%); color: var(--accent);
+  font-weight: 700; font-size: .83rem; letter-spacing: .03em; margin-bottom: 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
 }
-.history-card h3 { margin: 0 0 .6rem; font-size: 1.45rem; }
-.history-card p { margin: 0; color: var(--muted); }
+.history-year::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .85; flex-shrink: 0; }
+.history-card h3 { margin: 0 0 .65rem; font-size: 1.5rem; line-height: 1.2; }
+.history-card p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.72; }
 .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch; }
 .detail-photo {
   margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
@@ -439,15 +447,22 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
 :focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent); outline-offset: 2px; }
 
 @media (max-width: 1024px) {
-  .history-grid { grid-template-columns: 1fr; }
+  .history-grid { grid-template-columns: 1fr; gap: 1.25rem; padding-left: 1.6rem; margin-bottom: 2rem; }
+  .history-grid::before {
+    content: ""; position: absolute; left: 0.45rem; right: auto; top: 0.8rem; bottom: 0.8rem; width: 2px; height: auto;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 40%, var(--line)), color-mix(in srgb, var(--accent) 18%, var(--line)));
+    border-radius: 2px; pointer-events: none;
+  }
+  .history-card::before { top: 1.75rem; left: -1.55rem; }
   .detail-grid, .map-layout, .quiz-layout, .contact-layout, .grid-2 { grid-template-columns: 1fr; }
   .hero h1 { max-width: 12ch; }
 }
 
 @media (max-width: 860px) {
-  .nav { grid-template-columns: auto auto auto; }
-  .nav-toggle { display: inline-grid; order: 3; }
-  .theme-toggle { order: 2; margin-left: auto; }
+  .nav { display: flex; align-items: center; gap: .55rem; min-height: var(--header-h); }
+  .brand { margin-right: auto; min-width: 0; }
+  .nav-toggle { display: inline-grid; order: 3; margin-left: 0; }
+  .theme-toggle { order: 2; margin-left: 0; }
   .nav-menu {
     display: none; position: absolute; top: calc(100% + 1px); left: 0; right: 0;
     background: var(--bg); border-bottom: 1px solid var(--line); padding: .75rem 1rem 1rem;
@@ -457,6 +472,34 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
   .nav-menu.open { display: flex; }
   .nav-menu a { padding: .75rem .85rem; }
   .hero-facts { grid-template-columns: 1fr; gap: .75rem; max-width: 420px; }
+}
+
+@media (max-width: 768px) {
+  body { font-size: 1.0125rem; }
+  .hero { padding-top: 2.75rem; }
+  .hero-content { padding-top: 0.25rem; }
+  .lead, .hero-lead { font-size: 1.06rem; }
+  .history-card p, .check-list li, .detail-photo figcaption, .photo-credit, .contact-note p, .sources li, .sources summary { font-size: 1rem; }
+  figure.item .item-note { font-size: 0.98rem; line-height: 1.55; }
+  figure.item .item-meta { font-size: 0.78rem; letter-spacing: 0.06em; }
+  .gallery-note p { font-size: 0.98rem; line-height: 1.6; }
+  .gallery-note b { font-size: 1.08rem; }
+  .map-note, .poi-btn span { font-size: 0.95rem; }
+  .poi-btn strong { font-size: 1rem; }
+  .quiz-top { font-size: 0.96rem; }
+  .q-opt { font-size: 1rem; }
+  .q-why { font-size: 0.98rem; }
+  .field label { font-size: 0.95rem; }
+  .field input, .field textarea { font-size: 1rem; }
+  .field-err { font-size: 0.9rem; }
+  .form-status { font-size: 0.98rem; }
+  .page p { font-size: 1rem; line-height: 1.68; }
+  .book .note { font-size: 1rem; }
+  .book dt, .book dd { font-size: 0.98rem; }
+  .page .footnote { font-size: 0.9rem; line-height: 1.55; }
+  .church-photo figcaption { font-size: 0.9rem; }
+  .page .folio { font-size: 0.84rem; }
+  .facts-list dt, .facts-list dd { font-size: 1rem; }
 }
 
 @media (max-width: 720px) {
@@ -471,14 +514,14 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
   figure.item figcaption b { font-size: 1.02rem; }
   .gallery-note { padding: .85rem .9rem .9rem 1rem; }
   .section-head-row { flex-direction: column; align-items: stretch; }
-  .hero { min-height: min(78svh, 680px); padding: 1.5rem 0 2.25rem; }
+  .hero { min-height: min(78svh, 680px); padding: 2.5rem 0 2.25rem; }
   .hero-media img { object-position: center 10%; }
-  .hero-lead { font-size: 1rem; margin-bottom: 1.4rem; }
+  .hero-lead { font-size: 1.02rem; margin-bottom: 1.4rem; }
   .detail-photo img { min-height: 260px; }
   .book-wrap { margin-top: 2rem; }
   .book { padding: 8px 8px 12px; }
   .page { padding: 1.15rem .95rem 2.8rem; }
-  .page p { font-size: .98rem; line-height: 1.62; text-align: left; hyphens: auto; -webkit-hyphens: auto; }
+  .page p { font-size: 1rem; line-height: 1.66; text-align: left; hyphens: auto; -webkit-hyphens: auto; }
   .run-head { margin-bottom: .9rem !important; font-size: .62rem; letter-spacing: .16em; }
   .book h3 { font-size: clamp(1.35rem, 5vw, 1.7rem); }
   .book .note { padding: .85rem .8rem .45rem; margin-top: 1.1rem; }
@@ -486,8 +529,8 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
   .book dt, .book dd { text-align: left; padding-left: 0; }
   .church-photo { margin: .5rem auto 1rem; padding: 0; max-width: 100%; }
   .church-photo::before { width: 4.4rem; height: 1.15rem; top: -9px; }
-  .church-photo figcaption { margin-top: .55rem; font-size: .8rem; }
-  .page .folio { bottom: .85rem; font-size: .76rem; }
+  .church-photo figcaption { margin-top: .55rem; font-size: 0.88rem; }
+  .page .folio { bottom: .85rem; font-size: 0.82rem; }
   .map { height: 320px; }
   .footer-grid { flex-direction: column; gap: 1.5rem; }
   .lightbox-cap, .lightbox-controls { padding: .85rem 1rem; }
