@@ -512,19 +512,25 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
   .church-photo figcaption { font-size: 0.9rem; }
   .page .folio { font-size: 0.84rem; }
   .facts-list dt, .facts-list dd { font-size: 1rem; }
+  .gallery-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+  .gallery-note { display: none; }
+  figure.item .item-note { display: none; }
+  figure.item figcaption b { font-size: 1rem; line-height: 1.3; }
+  figure.item .item-meta { font-size: 0.72rem; letter-spacing: 0.04em; }
 }
 
 @media (max-width: 720px) {
   .section { padding: 3rem 0; }
   .gallery-shell { width: min(1380px, calc(100% - 1.25rem)); margin-top: 1rem; }
-  .gallery-panel { padding: .9rem; }
-  .gallery-board { gap: .9rem; }
+  .gallery-panel { padding: .75rem; }
+  .gallery-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
   .gallery-links { display: none !important; }
   .gallery-board .item, .gallery-board .gallery-note { transform: none !important; }
-  figure.item { padding: .55rem .55rem .7rem; }
-  figure.item figcaption { padding-top: .55rem; gap: .2rem; }
-  figure.item figcaption b { font-size: 1.02rem; }
-  .gallery-note { padding: .85rem .9rem .9rem 1rem; }
+  figure.item { padding: .45rem .45rem .55rem; }
+  figure.item figcaption { padding-top: .45rem; gap: .15rem; }
+  figure.item figcaption b { font-size: 0.98rem; line-height: 1.25; }
+  figure.item .item-note { display: none; }
+  .gallery-note { display: none; }
   .section-head-row { flex-direction: column; align-items: stretch; }
   .hero { min-height: auto; padding: 0; }
   .hero-media { position: relative; inset: auto; height: min(54vw, 360px); min-height: 240px; }
@@ -556,10 +562,12 @@ html[data-theme="dark"] .pages .page, html[data-theme="dark"] .pages .note, html
   .hero-actions { flex-direction: column; align-items: stretch; }
   .hero-actions .btn { width: 100%; }
   .gallery-shell { width: calc(100% - 1rem); }
-  .gallery-panel { padding: .7rem; }
-  .gallery-board { gap: .75rem; }
-  figure.item { padding: .5rem .5rem .65rem; }
-  .gallery-note { padding: .75rem .8rem .85rem .95rem; }
+  .gallery-panel { padding: .6rem; }
+  .gallery-board { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  figure.item { padding: .4rem .4rem .5rem; }
+  figure.item figcaption b { font-size: 0.94rem; }
+  figure.item .item-meta { font-size: 0.68rem; letter-spacing: 0.03em; }
+  figure.item .item-note, .gallery-note { display: none; }
   .filter-btn { flex: 1 1 auto; }
   .quiz-card, .contact-form, .info-card, .detail-copy, .history-card { padding: 1.2rem; }
   .lightbox-controls { justify-content: stretch; }
